@@ -1,28 +1,30 @@
 package com.caitiezhu.gaea.gitlab;
 
-import com.caitiezhu.gaea.git.common.GitlabApiRouter;
-import com.caitiezhu.gaea.git.model.Gitlab;
+import com.caitiezhu.gaea.gitlab.common.GitlabApiRouter;
+import com.caitiezhu.gaea.gitlab.model.Gitlab;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = GitApplication.class)
+@SpringBootTest(classes = GitlabApplication.class)
 public class GitlabApiRouterTest {
-    @Autowired
-    private Gitlab gitab;
+    @Resource
+    private GitlabApiRouter router;
 
     @Test
     public void gitlabModelInjectionTest() {
-        System.out.println(gitab.getAddress());
     }
 
     @Test
     public void getAccessTokenTest() throws IOException {
-        GitlabApiRouter.getAccessToken("caitiezhu", "caiyang123");
+        String result = router.getAccessToken("caitiezhu", "caiyang123");
+        System.out.println(result);
     }
 }
