@@ -15,12 +15,24 @@ public class CommandTests {
 
     @Test
     public void cloneCommand() throws EmptyArgsException {
-        String repo = "https://github.com/caitiezhu/gaea.git";
+        String accessToken = "168d4a5eabf4e515e21c3d01c84904b3865e74d39cafbcb24cc4ac82dc7026a8";
+        String repo = "gitlab.com/caitiezhu/demo.git";
         String branch = "master";
         String codePath = "gaea";
-        String got = commander.doClone(repo, branch, codePath);
-        String excepted = String.format("git clone %s -b %s %s", repo, branch, codePath);
+        String got = commander.doClone(accessToken, repo, branch, codePath);
+        String excepted = "git clone https://oauth2:168d4a5eabf4e515e21c3d01c84904b3865e74d39cafbcb24cc4ac82dc7026a8@gitlab.com/caitiezhu/demo.git -b master gaea";
         Assert.assertEquals(excepted, got);
+    }
+
+    @Test
+    public void cloneTest() throws EmptyArgsException, IOException {
+        String accessToken = "168d4a5eabf4e515e21c3d01c84904b3865e74d39cafbcb24cc4ac82dc7026a8";
+        String repo = "gitlab.com/caitiezhu/demo.git";
+        String branch = "master";
+        String codePath = "../gaea";
+        String cloneCommand = commander.doClone(accessToken, repo, branch, codePath);
+        List<String> got = Executor.exec(cloneCommand);
+        System.out.println(got);
     }
 
     @Test

@@ -5,11 +5,11 @@ import com.google.common.base.Strings;
 
 public class GitlabCommand {
 
-    public String doClone(String repo, String branch, String codePath) throws EmptyArgsException {
+    public String doClone(String accessToken, String repo, String branch, String codePath) throws EmptyArgsException {
         if (Strings.isNullOrEmpty(repo) || Strings.isNullOrEmpty(branch) || Strings.isNullOrEmpty(codePath)) {
             throw new EmptyArgsException();
         }
-        return String.format("git clone %s -b %s %s", repo, branch, codePath);
+        return String.format("git clone https://oauth2:%s@%s -b %s %s",accessToken, repo, branch, codePath);
     }
 
     public String checkVersion() {
