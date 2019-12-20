@@ -37,6 +37,13 @@ public class GitlabApiRouterTest {
     public void listProjects() throws IOException, URISyntaxException {
         String accessToken = "xyZb-TseBdy-XcXVB3sg";
         List<GitProject> projects = router.listProjects(accessToken);
+        //id =
         System.out.println(projects);
+    }
+
+    @Test
+    public void listBranches() throws IOException, URISyntaxException {
+        String accessToken = "xyZb-TseBdy-XcXVB3sg";
+        router.listBranches(15631409L, accessToken);
     }
 }

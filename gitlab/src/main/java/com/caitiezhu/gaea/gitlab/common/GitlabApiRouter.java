@@ -41,7 +41,20 @@ public class GitlabApiRouter {
         HttpResponse response = DefaultHttpClient.doGet(url, parameters);
         JSONArray dataArray = JSONArray.parseArray(response.getMsg());
 
-        List<GitProject> projects = dataArray.toJavaList(GitProject.class);
-        return projects;
+        return dataArray.toJavaList(GitProject.class);
+    }
+
+    public List listBranches(Long projectId, String accessToken) throws IOException, URISyntaxException {
+//        String url = gitlab.getAddress() + String.format("/api/v4/projects/%s/repository/branches", projectId);
+//        System.out.println(url);
+        List<NameValuePair> parameters = new ArrayList<NameValuePair>(){{
+            add(new BasicNameValuePair("private_token", accessToken));
+        }};
+
+        HttpResponse response = DefaultHttpClient.doGet("https://gitlab.com/api/v4/projects/15631409/repository/branches", parameters);
+
+        System.out.println(response);
+
+        return null;
     }
 }

@@ -32,9 +32,7 @@ public class DefaultHttpClient {
         try {
             response = httpclient.execute(postMethod);
             statusCode = response.getStatusLine().getStatusCode();
-            if (statusCode == 200) {
-                respMessage = EntityUtils.toString(response.getEntity(), "UTF-8");
-            }
+            respMessage = EntityUtils.toString(response.getEntity(), "UTF-8");
         } finally {
             if (response != null) response.close();
             httpclient.close();
@@ -54,9 +52,7 @@ public class DefaultHttpClient {
         try {
             response = httpclient.execute(postMethod);
             statusCode = response.getStatusLine().getStatusCode();
-            if (statusCode == 200) {
-                respMessage = EntityUtils.toString(response.getEntity(), "UTF-8");
-            }
+            respMessage = EntityUtils.toString(response.getEntity(), "UTF-8");
         } finally {
             if (response != null) response.close();
             httpclient.close();
@@ -78,9 +74,7 @@ public class DefaultHttpClient {
         try {
             response = httpclient.execute(getMethod);
             statusCode = response.getStatusLine().getStatusCode();
-            if (statusCode == 200) {
-                respMessage = EntityUtils.toString(response.getEntity(), "UTF-8");
-            }
+            respMessage = EntityUtils.toString(response.getEntity(), "UTF-8");
         } finally {
             if (response != null) response.close();
             httpclient.close();
@@ -100,9 +94,7 @@ public class DefaultHttpClient {
         try {
             response = httpclient.execute(getMethod);
             statusCode = response.getStatusLine().getStatusCode();
-            if (statusCode == 200) {
-                respMessage = EntityUtils.toString(response.getEntity(), "UTF-8");
-            }
+            respMessage = EntityUtils.toString(response.getEntity(), "UTF-8");
         } finally {
             if (response != null) response.close();
             httpclient.close();
