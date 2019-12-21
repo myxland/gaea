@@ -2,6 +2,7 @@ package com.caitiezhu.gaea.gitlab;
 
 import com.caitiezhu.gaea.gitlab.common.GitlabApiRouter;
 import com.caitiezhu.gaea.gitlab.bean.Gitlab;
+import com.caitiezhu.gaea.gitlab.model.GitBranch;
 import com.caitiezhu.gaea.gitlab.model.GitProject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,6 +45,7 @@ public class GitlabApiRouterTest {
     @Test
     public void listBranches() throws IOException, URISyntaxException {
         String accessToken = "xyZb-TseBdy-XcXVB3sg";
-        router.listBranches(15631409L, accessToken);
+        List<GitBranch> branches = router.listBranches(15631409L, accessToken);
+        System.out.println(branches);
     }
 }

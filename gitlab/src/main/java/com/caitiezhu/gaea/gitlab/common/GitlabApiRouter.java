@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.caitiezhu.gaea.gitlab.http.DefaultHttpClient;
 import com.caitiezhu.gaea.gitlab.http.HttpResponse;
 import com.caitiezhu.gaea.gitlab.bean.Gitlab;
+import com.caitiezhu.gaea.gitlab.model.GitBranch;
 import com.caitiezhu.gaea.gitlab.model.GitProject;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -44,17 +45,14 @@ public class GitlabApiRouter {
         return dataArray.toJavaList(GitProject.class);
     }
 
-    public List listBranches(Long projectId, String accessToken) throws IOException, URISyntaxException {
-//        String url = gitlab.getAddress() + String.format("/api/v4/projects/%s/repository/branches", projectId);
-//        System.out.println(url);
+    public List<GitBranch> listBranches(Long projectId, String accessToken) throws IOException, URISyntaxException {
+        String url = gitlab.getAddress() + String.format("/api/v4/projects/%s/repository/branches", projectId);
         List<NameValuePair> parameters = new ArrayList<NameValuePair>(){{
             add(new BasicNameValuePair("private_token", accessToken));
         }};
+        HttpResponse response = DefaultHttpClient.doGet(url, parameters);
+        JSONArray dataArray = JSONArray.parseArray(response.getMsg());
 
-        HttpResponse response = DefaultHttpClient.doGet("https://gitlab.com/api/v4/projects/15631409/repository/branches", parameters);
-
-        System.out.println(response);
-
-        return null;
+        return dataArray.toJavaList(GitBranch.class);
     }
 }

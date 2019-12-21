@@ -22,18 +22,7 @@ public class GitCommand {
                 .call();
     }
 
-    public static void checkout(Git git) throws GitAPIException {
-        List<Ref> list =  git.branchList().call();
-        System.out.println(list);
-    }
-
-    public static void main(String[] args) throws GitAPIException {
-        File file = new File("/Users/didi/Documents/gaea");
-        Git git = clone("https://github.com/caitiezhu/gaea.git", "master", file);
-        checkout(git);
-    }
-
-    public static void deletAllFiles(File file) {
+    private static void deletAllFiles(File file) {
         if (file == null) {
             return;
         }
