@@ -1,0 +1,8 @@
+GET http://localhost:8080/api/user/info?userId=1
+Content-Type: application/json
+
+//{
+//  "userId": 1
+//}
+
+###
