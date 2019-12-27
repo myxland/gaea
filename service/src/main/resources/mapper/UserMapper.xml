@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.caitiezhu.gaea.service.dao.UserDAO">
-    <resultMap id="BaseResultMap" type="com.caitiezhu.gaea.service.model.User">
+    <resultMap id="BaseResultMap" type="com.caitiezhu.gaea.service.model.po.User">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="email" jdbcType="VARCHAR" property="email"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
@@ -10,7 +10,9 @@
         <result column="password" jdbcType="VARCHAR" property="password"/>
     </resultMap>
 
-    <select id="getUser" parameterType="java.lang.Long" resultType="com.caitiezhu.gaea.service.model.User">
-        select id, email, username, name_zh, about_me, gmt_create, gmt_modified, deleted, access_token, password from gaea_user where id = #{userId}
+    <select id="getUser" parameterType="java.lang.Long" resultType="com.caitiezhu.gaea.service.model.po.User">
+        select id, email, username, name_zh, about_me, gmt_create, gmt_modified, deleted, access_token, password
+        from gaea_user
+        where id = #{userId}
     </select>
 </mapper>

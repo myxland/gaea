@@ -1,4 +1,4 @@
-package com.caitiezhu.gaea.service.model;
+package com.caitiezhu.gaea.service.model.po;
 
 import lombok.Data;
 
