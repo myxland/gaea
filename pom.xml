@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>gitlab</module>
+        <module>packer</module>
         <module>service</module>
     </modules>
 
