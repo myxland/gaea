@@ -2,23 +2,26 @@ package com.caitiezhu.gaea.gitlab.common;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.lib.Ref;
+import org.eclipse.jgit.transport.CredentialsProvider;
+import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 public class GitCommand {
 
-    public static Git clone(String remoteUrl, String branch, File repoDir) throws GitAPIException {
-        if (repoDir.exists()) {
-            deletAllFiles(repoDir);
+    public static Git clone(String remoteUrl, String branch, String repoDir) throws GitAPIException {
+        File path = new File("/Users/caitiezhu/IdeaProjects/gaea/" + repoDir);
+        if (path.exists()) {
+            deletAllFiles(path);
         }
+        CredentialsProvider provider = new UsernamePasswordCredentialsProvider("caitiezhu", "caiyang123");
         return Git.cloneRepository()
+                .setCredentialsProvider(provider)
                 .setURI(remoteUrl)
                 .setBranch(branch)
-                .setDirectory(repoDir)
+                .setDirectory(path)
                 .call();
     }
 

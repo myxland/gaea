@@ -1,10 +1,10 @@
-package com.caitiezhu.gaea.gitlab;
+package com.caitiezhu.gaea.agent;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GitlabApplicationTests {
+class AgentApplicationTests {
 
 	@Test
 	void contextLoads() {
