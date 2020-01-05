@@ -8,7 +8,7 @@
 		<version>1.0-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<artifactId>gitlab</artifactId>
+	<artifactId>packer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gitlab</name>
 	<description>Demo project for Spring Boot</description>

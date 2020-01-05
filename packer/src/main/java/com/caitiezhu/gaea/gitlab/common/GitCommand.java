@@ -12,7 +12,7 @@ import java.util.Objects;
 public class GitCommand {
 
     public static Git clone(String remoteUrl, String branch, String repoDir) throws GitAPIException {
-        File path = new File("/Users/caitiezhu/IdeaProjects/gaea/" + repoDir);
+        File path = new File(repoDir);
         if (path.exists()) {
             deletAllFiles(path);
         }
