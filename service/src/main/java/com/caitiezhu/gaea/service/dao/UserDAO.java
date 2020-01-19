@@ -11,7 +11,7 @@ public interface UserDAO {
 
     User getUser(@Param("userId") Long userId);
 
-    int insertUserInfo(RegisterDTO registerDTO);
+    int insert(RegisterDTO registerDTO);
 
     User selectUser(LoginDTO loginDTO);
 

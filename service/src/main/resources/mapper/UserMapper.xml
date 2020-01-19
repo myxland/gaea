@@ -8,9 +8,11 @@
         <result column="name_zh" jdbcType="VARCHAR" property="nameZh"/>
         <result column="about_me" jdbcType="VARCHAR" property="aboutMe"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
     </resultMap>
 
-    <insert id="insertUserInfo" parameterType="com.caitiezhu.gaea.service.model.dto.user.RegisterDTO">
+    <insert id="insert" parameterType="com.caitiezhu.gaea.service.model.dto.user.RegisterDTO">
         insert into gaea_user
         (email, username, name_zh, about_me, password)
         values (#{email}, #{username}, #{nameZh}, #{aboutMe}, #{password})

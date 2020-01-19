@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Response register(RegisterDTO registerDTO) {
-        int result = userDAO.insertUserInfo(registerDTO);
+        int result = userDAO.insert(registerDTO);
         if (result > 0) {
             return Response.build(ErrorCode.SUCCESS);
         }

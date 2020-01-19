@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caitiezhu.gaea.service.dao.BizLineDAO">
+    <resultMap id="BaseResultMap" type="com.caitiezhu.gaea.service.model.po.BizLine">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="biz_line" jdbcType="VARCHAR" property="bizLine"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.caitiezhu.gaea.service.model.dto.bizline.CreateBizLineDTO">
+        insert into gaea_biz_line
+        (biz_line)
+        values (#{bizLine})
+    </insert>
+
+</mapper>
