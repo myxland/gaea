@@ -10,15 +10,23 @@
         <result column="password" jdbcType="VARCHAR" property="password"/>
     </resultMap>
 
-    <insert id="insertUserInfo" parameterType="com.caitiezhu.gaea.service.model.vo.RegisterVO">
+    <insert id="insertUserInfo" parameterType="com.caitiezhu.gaea.service.model.dto.user.RegisterDTO">
         insert into gaea_user
         (email, username, name_zh, about_me, password)
         values (#{email}, #{username}, #{nameZh}, #{aboutMe}, #{password})
     </insert>
 
     <select id="getUser" parameterType="java.lang.Long" resultType="com.caitiezhu.gaea.service.model.po.User">
-        select id, email, username, name_zh, about_me, gmt_create, gmt_modified, deleted, access_token, password
+        select id, email, username, name_zh, about_me, gmt_create, gmt_modified, deleted, password
         from gaea_user
-        where id = #{userId}
+        where deleted = 0
+        and id = #{userId}
+    </select>
+
+    <select id="selectUser" resultType="com.caitiezhu.gaea.service.model.po.User">
+        select id, email, username, name_zh, about_me, gmt_create, gmt_modified, deleted, password
+        from gaea_user
+        where deleted = 0
+        and username = #{username} and password = #{password}
     </select>
 </mapper>

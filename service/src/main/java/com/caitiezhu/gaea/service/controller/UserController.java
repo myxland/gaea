@@ -1,10 +1,11 @@
 package com.caitiezhu.gaea.service.controller;
 
 import com.caitiezhu.gaea.service.common.Response;
+import com.caitiezhu.gaea.service.model.dto.user.LoginDTO;
+import com.caitiezhu.gaea.service.model.dto.user.RegisterDTO;
 import com.caitiezhu.gaea.service.model.po.User;
-import com.caitiezhu.gaea.service.model.vo.RegisterVO;
+import com.caitiezhu.gaea.service.model.vo.UserVO;
 import com.caitiezhu.gaea.service.service.UserService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +20,13 @@ public class UserController {
         return userService.getUser(userId);
     }
 
-    @PostMapping("register")
-    public Response register(@RequestBody RegisterVO register) {
-        return userService.register(register);
+    @PostMapping("/register")
+    public Response register(@RequestBody RegisterDTO registerDTO) {
+        return userService.register(registerDTO);
+    }
+
+    @PostMapping("/login")
+    public Response<UserVO> login(@RequestBody LoginDTO loginDTO) {
+        return userService.login(loginDTO);
     }
 }

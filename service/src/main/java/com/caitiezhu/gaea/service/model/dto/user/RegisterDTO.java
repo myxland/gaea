@@ -1,4 +1,4 @@
-package com.caitiezhu.gaea.service.model.vo;
+package com.caitiezhu.gaea.service.model.dto.user;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import lombok.Data;
  * @Date 2020/1/19 5:16 下午
  **/
 @Data
-public class RegisterVO {
+public class RegisterDTO {
     private String email;
     private String username;
     private String nameZh;

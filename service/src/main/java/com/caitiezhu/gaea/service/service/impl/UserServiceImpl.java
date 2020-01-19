@@ -3,8 +3,10 @@ package com.caitiezhu.gaea.service.service.impl;
 import com.caitiezhu.gaea.service.common.Response;
 import com.caitiezhu.gaea.service.dao.UserDAO;
 import com.caitiezhu.gaea.service.enums.ErrorCode;
+import com.caitiezhu.gaea.service.model.dto.user.LoginDTO;
 import com.caitiezhu.gaea.service.model.po.User;
-import com.caitiezhu.gaea.service.model.vo.RegisterVO;
+import com.caitiezhu.gaea.service.model.dto.user.RegisterDTO;
+import com.caitiezhu.gaea.service.model.vo.UserVO;
 import com.caitiezhu.gaea.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +22,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Response register(RegisterVO register) {
-        int result = userDAO.insertUserInfo(register);
+    public Response register(RegisterDTO registerDTO) {
+        int result = userDAO.insertUserInfo(registerDTO);
         if (result > 0) {
             return Response.build(ErrorCode.SUCCESS);
+        }
+        return Response.build(ErrorCode.FAIL);
+    }
+
+    @Override
+    public Response<UserVO> login(LoginDTO loginDTO) {
+        User user = userDAO.selectUser(loginDTO);
+        if (user != null) {
+            return Response.build(ErrorCode.SUCCESS, new UserVO().toVO(user));
         }
         return Response.build(ErrorCode.FAIL);
     }

@@ -24,11 +24,13 @@ public class ProjectServiceImpl implements ProjectService {
     private static String REMOTE_PATH = "/root/";
 
     @Override
-    public void cloneProject(String url, String branch, String projectName) throws GitAPIException, JSchException {
+    public void cloneProject(String url, String branch, String projectName) throws GitAPIException, JSchException, IOException {
         //local project path
         String inLocalProject = LOCAL_PATH + projectName;
         //remote project path
         String inRemoteProject = REMOTE_PATH + projectName;
+
+        Git git = GitCommand.clone(url, branch, inLocalProject);
 
         GitCommand.clone(url, branch, inLocalProject);
 
@@ -36,10 +38,11 @@ public class ProjectServiceImpl implements ProjectService {
         session.connect();
         //upload project and shell
         SSHExecutor.upLoadFile(session, inLocalProject, inRemoteProject);
-        SSHExecutor.upLoadFile(session, "/Users/didi/IdeaProjects/gaea/shell/start.sh", inRemoteProject);
+        SSHExecutor.upLoadFile(session, "/Users/caitiezhu/IdeaProjects/gaea/shell/start.sh", inRemoteProject);
         //execute command
         SSHExecutor.remoteExecute(session, "sh /root/demo/start.sh demo").forEach(System.out::println);
         System.out.println("finished");
         session.disconnect();
     }
+
 }
