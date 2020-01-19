@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/api/project")
 public class ProjectController {
@@ -15,7 +17,7 @@ public class ProjectController {
     private ProjectService projectService;
 
     @RequestMapping("/clone")
-    public void cloneProject(String url, String branch, String projectName) throws GitAPIException, JSchException {
+    public void cloneProject(String url, String branch, String projectName) throws GitAPIException, JSchException, IOException {
         projectService.cloneProject(url, branch, projectName);
     }
 }
