@@ -94,6 +94,13 @@
 			<artifactId>nacos-config-spring-boot-starter</artifactId>
 			<version>0.2.1</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

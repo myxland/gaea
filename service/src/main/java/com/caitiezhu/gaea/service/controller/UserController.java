@@ -6,6 +6,7 @@ import com.caitiezhu.gaea.service.model.dto.user.RegisterDTO;
 import com.caitiezhu.gaea.service.model.po.User;
 import com.caitiezhu.gaea.service.model.vo.UserVO;
 import com.caitiezhu.gaea.service.service.UserService;
+import com.caitiezhu.gaea.service.utils.JedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
